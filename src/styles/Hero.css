@@ -8,9 +8,43 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Center the wrapper */
   padding: 0 1.5rem;
   background-color: var(--color-background);
+  background-image: url('../assets/hero-background.png');
+  background-position: 55% 55%; /* Shifted right and down from center */
+  background-size: 120%; /* Zoomed in from 'cover' to 120% */
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Add overlay to improve text readability if needed */
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(12, 12, 30, 0.75); /* Matches var(--color-background) with opacity */
+  z-index: 0;
+}
+
+/* Content wrapper for centered block with left-aligned text */
+.hero-content-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 42rem; /* Match tagline-box max-width */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Left align content inside wrapper */
+}
+
+/* Ensure content is above the overlay */
+#hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Responsive adjustments */
@@ -25,6 +59,7 @@
   font-size: 3rem;
   font-weight: 700;
   color: var(--color-text-primary);
+  margin-bottom: 0.75rem; /* Spacing between name and divider */
 }
 
 @media (min-width: 768px) {
@@ -35,10 +70,14 @@
 
 /* Title area with divider */
 #hero .title-divider {
-  width: 2rem;
+  width: 4rem; /* Made wider now that it's standalone */
   height: 0.125rem;
-  margin-right: 1rem;
   background-color: var(--color-primary);
+  margin: 0 0 0.75rem 0; /* Left-aligned with 0.75rem bottom margin */
+}
+
+#hero .flex {
+  margin-top: 0; /* Remove top margin as divider is separate now */
 }
 
 #hero .subtitle {
@@ -46,6 +85,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-secondary);
+  line-height: 1.15; /* Slight increase in line height for better readability */
 }
 
 @media (min-width: 768px) {
@@ -62,7 +102,7 @@
   border-radius: 0.75rem;
   padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  max-width: 42rem;
+  width: 100%; /* Full width of the parent wrapper */
 }
 
 #hero .tagline-primary {
@@ -87,6 +127,7 @@
   margin-top: 2.5rem;
   display: flex;
   align-items: center;
+  width: 100%; /* Full width for alignment consistency */
 }
 
 #hero .cta-button {
@@ -107,6 +148,7 @@
 /* Social icons */
 #hero .social-icon {
   margin-left: 1rem;
+  margin-right: 1rem;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   width: 2.5rem;
@@ -123,4 +165,9 @@
 
 #hero .social-icon + .social-icon {
   margin-left: 0.5rem;
+}
+
+/* Adjust first social icon */
+#hero .cta-container .social-icon:first-child {
+  margin-left: 0;
 } 
