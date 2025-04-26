@@ -1,9 +1,8 @@
-"use client";
-
 import React, { useState } from "react";
 import BranchSelector from "./BranchSelector";
 import ProjectList from "./ProjectList";
 import { Branch, ProjectsData } from "./types";
+import "../../styles/PortfolioTree.css";
 
 const ProjectTimelineTree: React.FC = () => {
   const [selectedBranch, setSelectedBranch] = useState<string>("ml");
@@ -129,15 +128,15 @@ const ProjectTimelineTree: React.FC = () => {
   };
 
   return (
-    <section className="flex flex-col items-center px-5 py-20 w-screen bg-neutral-900 min-h-screen">
-      <div className="w-full max-w-[1400px]">
-        <h2 className="mb-5 text-5xl font-bold text-center text-white">
+    <section className="project-timeline-container">
+      <div className="project-timeline-wrapper">
+        <h2 className="project-timeline-title">
           Project Timeline Tree
         </h2>
-        <p className="mb-16 text-xl text-center text-neutral-400">
+        <p className="project-timeline-subtitle">
           Explore my journey through different technology branches
         </p>
-        <div className="flex relative gap-10 justify-center items-start max-md:flex-col">
+        <div className="project-timeline-content">
           <BranchSelector
             branches={branches}
             projects={projects}
@@ -151,14 +150,6 @@ const ProjectTimelineTree: React.FC = () => {
             selectedBranch={selectedBranch}
           />
         </div>
-      </div>
-      <div>
-        <div
-          dangerouslySetInnerHTML={{
-            __html:
-              '<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">',
-          }}
-        />
       </div>
     </section>
   );

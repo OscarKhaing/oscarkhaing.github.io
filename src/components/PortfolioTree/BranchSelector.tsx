@@ -1,7 +1,6 @@
-"use client";
-
 import React from "react";
 import { Branch, ProjectsData } from "./types";
+import "../../styles/BranchSelector.css";
 
 interface BranchSelectorProps {
   branches: Branch[];
@@ -19,9 +18,9 @@ const BranchSelector: React.FC<BranchSelectorProps> = ({
   onSelectBranch,
 }) => {
   return (
-    <div className="relative h-[600px] w-[600px] max-md:h-[400px] max-md:w-[400px] max-sm:h-[300px] max-sm:w-[300px]">
+    <div className="branch-selector">
       <div
-        className="absolute transition-transform ease-in-out duration-[800ms] size-full"
+        className="branch-wheel"
         style={{
           transform: `rotate(${rotationDegrees}deg)`,
         }}
@@ -29,20 +28,20 @@ const BranchSelector: React.FC<BranchSelectorProps> = ({
         {branches.map((branch) => (
           <div
             key={branch.id}
-            className="origin-bottom absolute top-2/4 left-2/4 w-1 transition-all duration-500 ease-in-out h-[45%]"
+            className="branch-line"
             style={{
               transform: `rotate(${branch.angle}deg)`,
               opacity: selectedBranch === branch.id ? 1 : 0.3,
             }}
           >
             <div
-              className="rounded-sm transition-all duration-500 ease-in-out size-full"
+              className="branch-line-inner"
               style={{
                 background: selectedBranch === branch.id ? "#4318D1" : "#333",
               }}
             />
             <button
-              className="whitespace-nowrap absolute top-0 left-2/4 px-4 py-2 text-sm font-medium rounded-lg -translate-x-2/4 -translate-y-full"
+              className="branch-button"
               onClick={() => onSelectBranch(branch.id)}
               style={{
                 background: selectedBranch === branch.id ? "#4318D1" : "#333",
@@ -54,7 +53,7 @@ const BranchSelector: React.FC<BranchSelectorProps> = ({
             {projects[branch.id]?.map((project, index) => (
               <div
                 key={`${branch.id}-dot-${index}`}
-                className="absolute left-2/4 w-2 h-2 rounded-full transition-all duration-500 ease-in-out"
+                className="branch-dot"
                 style={{
                   transform: `translateY(${
                     -index * 120 - 100
@@ -63,7 +62,7 @@ const BranchSelector: React.FC<BranchSelectorProps> = ({
                 }}
               >
                 <div
-                  className="rounded-full size-full"
+                  className="branch-dot-inner"
                   style={{
                     background:
                       selectedBranch === branch.id ? "#4318D1" : "#333",

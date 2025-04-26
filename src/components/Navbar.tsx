@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 import '../styles/animations.css';
 
@@ -8,6 +9,8 @@ import '../styles/animations.css';
  */
 const Navbar = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   
   // Change navbar transparency on scroll
   useEffect(() => {
@@ -28,13 +31,26 @@ const Navbar = () => {
 
   // Smooth scroll function
   const scrollToSection = (sectionId: string): void => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    // If we're not on the homepage, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Use setTimeout to wait for navigation to complete
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // If we're already on the homepage, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
-  // Navigation items
+  // Navigation items for all pages
   const navItems = ['Home', 'Portfolio', 'Contact'];
 
   return (
@@ -46,17 +62,30 @@ const Navbar = () => {
     >
       <div className="navbar-container">
         {/* Logo/Name */}
-        <motion.div 
-          className="navbar-logo"
-          whileHover={{ scale: 1.05 }}
-          onClick={() => scrollToSection('hero')}
-          style={{ cursor: 'pointer' }}
-        >
-          Oscar Khaing
-        </motion.div>
+        <Link to="/">
+          <motion.div 
+            className="navbar-logo"
+            whileHover={{ scale: 1.05 }}
+            style={{ cursor: 'pointer' }}
+          >
+            Oscar Khaing
+          </motion.div>
+        </Link>
 
         {/* Navigation Links */}
         <div className="navbar-links">
+          {/* Page Navigation */}
+          <Link to="/projects">
+            <motion.button
+              className="navbar-link"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Project Tree
+            </motion.button>
+          </Link>
+
+          {/* Section Navigation - on all pages */}
           {navItems.map((item) => (
             <motion.button
               key={item}
