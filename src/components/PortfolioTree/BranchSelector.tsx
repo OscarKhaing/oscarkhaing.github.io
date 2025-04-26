@@ -50,7 +50,10 @@ const BranchSelector: React.FC<BranchSelectorProps> = ({
             >
               <span>{branch.name}</span>
             </button>
-            {projects[branch.id]?.map((project, index) => (
+            {projects[branch.id]?.map((_, index) => (
+              // Note: The project data (first parameter) could be used in the future
+              // for adding features like tooltips showing project details on hover,
+              // or making dots clickable to navigate to the specific project
               <div
                 key={`${branch.id}-dot-${index}`}
                 className="branch-dot"
