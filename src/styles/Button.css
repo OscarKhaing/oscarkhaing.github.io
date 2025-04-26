@@ -1,0 +1,25 @@
+.portfolio-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(110, 142, 251, 0.2);
+}
+
+.portfolio-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(110, 142, 251, 0.3);
+  background: linear-gradient(135deg, #5d7df9, #9666d9);
+}
+
+.portfolio-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(110, 142, 251, 0.2);
+} 

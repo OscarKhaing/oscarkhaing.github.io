@@ -49,6 +49,8 @@ const Navbar = () => {
         <motion.div 
           className="navbar-logo"
           whileHover={{ scale: 1.05 }}
+          onClick={() => scrollToSection('hero')}
+          style={{ cursor: 'pointer' }}
         >
           Oscar Khaing
         </motion.div>

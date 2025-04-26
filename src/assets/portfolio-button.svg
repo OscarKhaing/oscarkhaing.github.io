@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+  <!-- Button background with gradient -->
+  <defs>
+    <linearGradient id="buttonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6e8efb"/>
+      <stop offset="100%" style="stop-color:#a777e3"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="4"/>
+      <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.431 0 0 0 0 0.557 0 0 0 0 0.984 0 0 0 0.2 0"/>
+    </filter>
+  </defs>
+  
+  <!-- Button shape -->
+  <rect x="0" y="0" width="200" height="50" rx="8" ry="8" fill="url(#buttonGradient)" filter="url(#shadow)"/>
+  
+  <!-- Button text -->
+  <text x="100" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="white" text-anchor="middle">
+    Visit My Portfolio
+  </text>
+</svg> 

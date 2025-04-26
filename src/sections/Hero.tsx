@@ -2,6 +2,14 @@ import '../styles/Hero.css';
 import '../styles/animations.css';
 
 const Hero = () => {
+  // Smooth scroll function
+  const scrollToPortfolio = (): void => {
+    const portfolioSection = document.getElementById('portfolio');
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="hero">
       <div className="hero-content-wrapper">
@@ -26,12 +34,15 @@ const Hero = () => {
         </div>
         
         <div className="cta-container fade-in delay-600">
+          <button 
+            className="cta-button"
+            onClick={scrollToPortfolio}
+          >
+            Explore My Work
+          </button>
           <div className="social-icon">
             <span>GH</span>
           </div>
-          <button className="cta-button">
-            Explore My Work
-          </button>
           <div className="social-icon">
             <span>LI</span>
           </div>

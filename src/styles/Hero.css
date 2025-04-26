@@ -12,7 +12,7 @@
   padding: 0 1.5rem;
   background-color: var(--color-background);
   background-image: url('../assets/hero-background.png');
-  background-position: 55% 55%; /* Shifted right and down from center */
+  background-position: 30% 50%; /* Shifted right and down from center */
   background-size: 120%; /* Zoomed in from 'cover' to 120% */
   background-repeat: no-repeat;
   position: relative;
@@ -133,10 +133,11 @@
 #hero .cta-button {
   background-color: white;
   color: black;
-  font-weight: 500;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.375rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 600; /* Slightly bolder */
+  font-size: 1.125rem; /* Increased font size */
+  padding: 0.75rem 2rem; /* Larger padding */
+  border-radius: 0.5rem; /* Slightly larger border radius */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
