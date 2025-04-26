@@ -1,11 +1,14 @@
-
 import './App.css'
+import Navbar from './components/Navbar'
+import Hero from './sections/Hero'
+import Portfolio from './sections/Portfolio'
 
 function App() {
-
   return (
-    <div>
-      <h1>Hello World</h1>
+    <div className="min-h-screen bg-background text-text-primary">
+      <Navbar />
+      <Hero />
+      <Portfolio />
     </div>
   )
 }

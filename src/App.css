@@ -1,42 +1,69 @@
+/* 
+ * Global Styles
+ * Base styles and theme variables used throughout the application
+ */
+
+:root {
+  /* Typography */
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Theme Colors */
+  --color-background: #0C0C1E;
+  --color-surface: #1A1B2D;
+  --color-primary: #F57373;
+  --color-secondary: #60E1E0;
+  --color-highlight: #9B5DE5;
+  --color-text-primary: #FDFDFD;
+  --color-text-secondary: #A0A1B8;
+
+  /* Default color scheme */
+  color-scheme: light dark;
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+}
+
+/* Base layout */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Typography and elements */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a {
+  font-weight: 500;
+  color: var(--color-secondary);
+  text-decoration: inherit;
+  transition: color 0.2s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+a:hover {
+  color: var(--color-primary);
 }
 
-.card {
-  padding: 2em;
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
 }
 
-.read-the-docs {
-  color: #888;
-}
