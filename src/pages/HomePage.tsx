@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import Hero from '../sections/Hero'
-import Portfolio from '../sections/Portfolio'
+import Hero from '../components/sections/Hero'
+import About from '../components/sections/About'
+import Portfolio from '../components/sections/Portfolio'
 import { Helmet } from 'react-helmet-async'
 import '../styles/Pages.css'
 
@@ -19,6 +20,7 @@ const HomePage: React.FC = () => {
       <Navbar />
       <div className="page-content">
         <Hero />
+        <About />
         <Portfolio />
       </div>
     </div>

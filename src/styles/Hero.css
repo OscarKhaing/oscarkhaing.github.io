@@ -4,12 +4,13 @@
 
 /* Container */
 #hero {
-  min-height: 100vh;
+  height: 106vh;
+  margin-top: calc(var(--navbar-height) * -1.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; /* Center the wrapper */
-  padding: 0 1.5rem;
+  padding: var(--navbar-height) 1.5rem 0;
   background-color: var(--color-background);
   background-image: url('../assets/hero-background.png');
   background-position: 30% 50%; /* Shifted right and down from center */
@@ -26,7 +27,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(12, 12, 30, 0.75); /* Matches var(--color-background) with opacity */
+  background-color: rgba(12, 12, 30, 0.5); /* Matches var(--color-background) with opacity */
   z-index: 0;
 }
 

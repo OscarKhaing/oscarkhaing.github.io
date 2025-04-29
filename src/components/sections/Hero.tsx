@@ -1,13 +1,13 @@
-import '../styles/Hero.css';
-import '../styles/animations.css';
+import '../../styles/Hero.css';
+import '../../styles/animations.css';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-  // Smooth scroll function
-  const scrollToPortfolio = (): void => {
-    const portfolioSection = document.getElementById('portfolio');
-    if (portfolioSection) {
-      portfolioSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const navigate = useNavigate();
+  
+  // Navigate to portfolio page
+  const goToPortfolio = (): void => {
+    navigate('/portfolio');
   };
 
   return (
@@ -36,7 +36,7 @@ const Hero = () => {
         <div className="cta-container fade-in delay-600">
           <button 
             className="cta-button"
-            onClick={scrollToPortfolio}
+            onClick={goToPortfolio}
           >
             Explore My Work
           </button>
