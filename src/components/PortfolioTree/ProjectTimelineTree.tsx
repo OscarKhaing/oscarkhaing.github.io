@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import BranchSelector from "./BranchSelector";
 import ProjectList from "./ProjectList";
 import { Branch, ProjectsData } from "./types";
 import "../../styles/PortfolioTree.css";
+import Tree3D from "./Tree3D";
 
 const ProjectTimelineTree: React.FC = () => {
   const [selectedBranch, setSelectedBranch] = useState<string>("ml");
-  const [rotationDegrees, setRotationDegrees] = useState<number>(0);
 
   const [branches] = useState<Branch[]>([
     {
@@ -120,9 +119,10 @@ const ProjectTimelineTree: React.FC = () => {
   });
 
   const selectBranch = (branchId: string) => {
-    const newBranch = branches.find((b) => b.id === branchId);
-    if (newBranch) {
-      setRotationDegrees(-newBranch.angle);
+    // Handle "all" separately to reset to default view
+    if (branchId === 'all') {
+      setSelectedBranch('all');
+    } else {
       setSelectedBranch(branchId);
     }
   };
@@ -137,11 +137,10 @@ const ProjectTimelineTree: React.FC = () => {
           Explore my journey through different technology branches
         </p>
         <div className="project-timeline-content">
-          <BranchSelector
+          <Tree3D
             branches={branches}
             projects={projects}
             selectedBranch={selectedBranch}
-            rotationDegrees={rotationDegrees}
             onSelectBranch={selectBranch}
           />
           <ProjectList
