@@ -2,7 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import { Helmet } from 'react-helmet-async';
-import '../styles/PortfolioPage.css';
+import FocusPills from './PortfolioPage/FocusPills';
+import Footer from './PortfolioPage/Footer';
+import Timeline from './PortfolioPage/Timeline';
+import FuturePlans from './PortfolioPage/FuturePlans';
+import './PortfolioPage.css';
 
 // Types
 type CategoryId = 'machine-learning' | 'cloud-computing' | 'systems' | 'software' | 'quant' | 'all';
@@ -28,19 +32,13 @@ interface Project {
   projectUrl: string;
 }
 
-interface TimelineItem {
-  year: string;
-  title: string;
-  description: string;
-}
+
 
 const PortfolioPage: React.FC = () => {
   // State
   const [activeCategory, setActiveCategory] = useState<CategoryId>('all');
-  const [showFuturePlans, setShowFuturePlans] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
-  const [clickedLink, setClickedLink] = useState<string | null>(null);
   
   // Handle sticky navigation
   useEffect(() => {
@@ -55,15 +53,7 @@ const PortfolioPage: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Technical focus areas
-  const techFocusAreas = [
-    'Machine Learning',
-    'Cloud Infrastructure',
-    'Systems Engineering',
-    'Quantitative Research',
-    'DevOps Tooling',
-    'LLM Applications'
-  ];
+
 
   // Categories
   const categories: Category[] = [
@@ -174,54 +164,9 @@ const PortfolioPage: React.FC = () => {
     },
   ];
 
-  // Timeline data
-  const timelineData: TimelineItem[] = [
-    {
-      year: '2021',
-      title: 'First ML Projects',
-      description: 'Began exploring machine learning with PyTorch and TensorFlow'
-    },
-    {
-      year: '2022',
-      title: 'Backend & API',
-      description: 'Built robust API infrastructure with FastAPI and deployed to cloud'
-    },
-    {
-      year: '2023',
-      title: 'Full-Stack & LLMs',
-      description: 'Integrated frontend and backend systems, explored LLM applications'
-    },
-    {
-      year: '2024',
-      title: 'Cloud & Quant',
-      description: 'Focused on cloud infrastructure and quantitative trading systems'
-    },
-    {
-      year: '2025',
-      title: 'DevOps & Optimization',
-      description: 'Planning: advanced DevOps pipelines and system optimization'
-    },
-  ];
+  
 
-  // Future plans data
-  const futurePlans = [
-    {
-      title: 'DevOps Automation',
-      description: 'Building comprehensive CI/CD pipelines and infrastructure as code'
-    },
-    {
-      title: 'GPU Cluster Optimization',
-      description: 'Optimizing distributed training for ML models across GPU clusters'
-    },
-    {
-      title: 'Systems & Observability',
-      description: 'Creating advanced monitoring and observability tools for complex systems'
-    },
-    {
-      title: 'Team Scaling',
-      description: 'Leading engineering teams and mentoring junior developers'
-    },
-  ];
+  
 
   const filteredProjects = activeCategory === 'all' 
     ? projects.filter(project => !project.featured) 
@@ -229,20 +174,7 @@ const PortfolioPage: React.FC = () => {
   
   const featuredProject = projects.find(project => project.featured);
 
-  // Handle footer link click with red flash effect
-  const handleLinkClick = (linkId: string, href: string) => {
-    setClickedLink(linkId);
-    setTimeout(() => setClickedLink(null), 300);
-    
-    // If it's not an anchor link, let the default behavior happen
-    if (!href.startsWith('#')) return;
-    
-    // Otherwise handle anchor links manually
-    const element = document.getElementById(href.substring(1));
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  
 
   return (
     <div className="cyberpunk-portfolio">
@@ -253,51 +185,7 @@ const PortfolioPage: React.FC = () => {
       
       <Navbar />
       
-      {/* Hero Header Section */}
-      <section className="cp-hero-header">
-        <div className="cp-hero-content">
-          <motion.h1 
-            className="cp-main-title"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            TECHNICAL PORTFOLIO
-          </motion.h1>
-          
-          <motion.p 
-            className="cp-subtitle"
-            initial={{ opacity:
-0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            Where ML meets Infrastructure, Cloud meets Control.
-          </motion.p>
-        </div>
-        <div className="cp-grain-overlay"></div>
-      </section>
-      
-      {/* Technical Focus Pills */}
-      <section className="cp-focus-pills">
-        <div className="cp-focus-pills-container">
-          {techFocusAreas.map((focus, index) => (
-            <motion.div 
-              key={index} 
-              className="cp-focus-pill"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 * index }}
-              whileHover={{ 
-                scale: 1.05, 
-                boxShadow: '0 0 15px rgba(255, 240, 0, 0.7)' 
-              }}
-            >
-              {focus}
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <FocusPills />
       
       {/* Featured Project */}
       {featuredProject && (
@@ -412,92 +300,11 @@ const PortfolioPage: React.FC = () => {
         </div>
       </section>
       
-      {/* Timeline Section */}
-      <section className="cp-timeline">
-        <h2 className="cp-section-title">Development Journey</h2>
-        
-        <div className="cp-timeline-container">
-          {timelineData.map((item, index) => (
-            <div key={index} className="cp-timeline-item">
-              <div className="cp-timeline-dot"></div>
-              <div className="cp-timeline-content">
-                <div className="cp-timeline-year">{item.year}</div>
-                <h3 className="cp-timeline-title">{item.title}</h3>
-                <p className="cp-timeline-description">{item.description}</p>
-              </div>
-            </div>
-          ))}
-          <div className="cp-timeline-line"></div>
-        </div>
-      </section>
+      <Timeline />
       
-      {/* Future Plans */}
-      <section className="cp-future-plans">
-        <div className="cp-future-header" onClick={() => setShowFuturePlans(!showFuturePlans)}>
-          <h2 className="cp-section-title">What's Next?</h2>
-          <div className={`cp-expand-icon ${showFuturePlans ? 'expanded' : ''}`}>+</div>
-        </div>
-        
-        {showFuturePlans && (
-          <motion.div 
-            className="cp-future-content"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            transition={{ duration: 0.4 }}
-          >
-            <div className="cp-future-grid">
-              {futurePlans.map((plan, index) => (
-                <div key={index} className="cp-future-card">
-                  <h3 className="cp-future-title">{plan.title}</h3>
-                  <p className="cp-future-description">{plan.description}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </section>
+      <FuturePlans />
       
-      {/* Footer */}
-      <footer className="cp-footer">
-        <div className="cp-footer-content">
-          <div className="cp-footer-links">
-            <a 
-              href="https://github.com" 
-              className={`cp-footer-link ${clickedLink === 'github' ? 'clicked' : ''}`}
-              onClick={() => handleLinkClick('github', 'https://github.com')}
-            >
-              Github
-            </a>
-            <a 
-              href="#" 
-              className={`cp-footer-link ${clickedLink === 'resume' ? 'clicked' : ''}`}
-              onClick={() => handleLinkClick('resume', '#')}
-            >
-              Resume
-            </a>
-            <a 
-              href="mailto:example@email.com" 
-              className={`cp-footer-link ${clickedLink === 'email' ? 'clicked' : ''}`}
-              onClick={() => handleLinkClick('email', 'mailto:example@email.com')}
-            >
-              Email
-            </a>
-            <a 
-              href="/" 
-              className={`cp-footer-link ${clickedLink === 'home' ? 'clicked' : ''}`}
-              onClick={() => handleLinkClick('home', '/')}
-            >
-              Back to Home
-            </a>
-          </div>
-          
-          <div className="cp-footer-glyphs">
-            <div className="cp-glyph"></div>
-            <div className="cp-glyph"></div>
-            <div className="cp-glyph"></div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

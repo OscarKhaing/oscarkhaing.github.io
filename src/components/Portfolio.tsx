@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/Portfolio.css';
+import './Portfolio.css';
 import '../styles/animations.css';
 
 // Type definitions for better type safety and easier extensions

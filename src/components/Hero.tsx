@@ -1,4 +1,4 @@
-import '../styles/Hero.css';
+import './Hero.css';
 import '../styles/animations.css';
 import { useNavigate } from 'react-router-dom';
 

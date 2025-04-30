@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import '../styles/Navbar.css';
+import './Navbar.css';
 import '../styles/animations.css';
 
 /**

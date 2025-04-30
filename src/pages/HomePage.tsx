@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import About from '../components/About'
 import Portfolio from '../components/Portfolio'
+import Footer from '../components/Footer'
 import { Helmet } from 'react-helmet-async'
 import '../styles/Pages.css'
 
@@ -22,6 +23,7 @@ const HomePage: React.FC = () => {
         <Hero />
         <About />
         <Portfolio />
+        <Footer />
       </div>
     </div>
   )

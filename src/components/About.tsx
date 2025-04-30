@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/About.css';
+import './About.css';
 import '../styles/animations.css';
 
 const About = () => {

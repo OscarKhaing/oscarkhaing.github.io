@@ -1,0 +1,77 @@
+
+/* =================== */
+/* FOOTER SECTION */
+/* =================== */
+.cp-footer {
+    background-color: var(--cp-darker);
+    padding: 3rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Remove red glitch particles */
+  .cp-footer::before {
+    display: none;
+  }
+  
+  .cp-footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .cp-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .cp-footer-link {
+    color: var(--cp-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .cp-footer-link:hover {
+    color: var(--cp-primary);
+    text-shadow: none;
+  }
+  
+  .cp-footer-link.clicked {
+    color: var(--cp-highlight);
+    text-shadow: none;
+  }
+  
+  .cp-footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--cp-secondary);
+    transform: scaleX(0.5);
+    transform-origin: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .cp-footer-link:hover::after {
+    transform: scaleX(1);
+    background-color: var(--cp-primary);
+  }
+  
+  .cp-footer-link:active::after {
+    background-color: var(--cp-highlight);
+  }
+  
+  .cp-footer-glyphs {
+    display: none;
+  }

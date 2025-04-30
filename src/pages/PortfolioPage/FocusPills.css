@@ -1,0 +1,70 @@
+
+/* =================== */
+/* FOCUS PILLS SECTION */
+/* =================== */
+.cp-focus-pills {
+  background-color: var(--cp-dark);
+  padding: 2rem 0;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.cp-focus-pills-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  animation: none;
+}
+
+.cp-focus-pills-container::-webkit-scrollbar {
+  display: none;
+}
+
+.cp-focus-pill {
+  background-color: rgba(96, 225, 224, 0.05);
+  color: var(--cp-secondary);
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  border: 1px solid var(--cp-secondary);
+  box-shadow: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Alternating pill colors */
+.cp-focus-pill:nth-child(2),
+.cp-focus-pill:nth-child(5) {
+  color: var(--cp-primary);
+  border-color: var(--cp-primary);
+  background-color: rgba(245, 115, 115, 0.05);
+}
+
+.cp-focus-pill:nth-child(3) {
+  color: var(--cp-highlight);
+  border-color: var(--cp-highlight);
+  background-color: rgba(155, 93, 229, 0.05);
+}
+
+.cp-focus-pill:hover {
+  transform: translateY(-3px);
+  background-color: rgba(96, 225, 224, 0.1);
+}
+
+/* Customized hover effects based on pill color */
+.cp-focus-pill:nth-child(2):hover,
+.cp-focus-pill:nth-child(5):hover {
+  background-color: rgba(245, 115, 115, 0.1);
+}
+
+.cp-focus-pill:nth-child(3):hover {
+  background-color: rgba(155, 93, 229, 0.1);
+}

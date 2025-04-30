@@ -1,0 +1,95 @@
+/* =================== */
+/* FUTURE PLANS SECTION */
+/* =================== */
+.cp-future-plans {
+  background-color: var(--cp-dark);
+  padding: 5rem 1.5rem;
+  position: relative;
+}
+
+.cp-future-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.cp-expand-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--cp-secondary);
+  color: var(--cp-dark);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cp-expand-icon.expanded {
+  transform: rotate(45deg);
+  background-color: var(--cp-primary);
+}
+
+.cp-future-content {
+  overflow: hidden;
+}
+
+.cp-future-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .cp-future-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cp-future-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--cp-light-gray);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cp-future-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: var(--cp-primary);
+}
+
+.cp-future-card:nth-child(even):hover {
+  border-color: var(--cp-secondary);
+}
+
+.cp-future-card::after {
+  display: none;
+}
+
+.cp-future-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cp-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.cp-future-card:nth-child(even) .cp-future-title {
+  color: var(--cp-primary);
+}
+
+.cp-future-description {
+  color: var(--cp-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
