@@ -1,38 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
 import { Helmet } from 'react-helmet-async';
 import FocusPills from './PortfolioPage/FocusPills';
-import Footer from './PortfolioPage/Footer';
+import FeaturedProject from './PortfolioPage/components/FeaturedProject';
+import ProjectTabs from './PortfolioPage/components/ProjectTabs';
+import ProjectGrid from './PortfolioPage/components/ProjectGrid';
 import Timeline from './PortfolioPage/Timeline';
 import FuturePlans from './PortfolioPage/FuturePlans';
+import Footer from './PortfolioPage/Footer';
+import { CategoryId, Category, Technology, Project } from './PortfolioPage/types';
 import './PortfolioPage.css';
-
-// Types
-type CategoryId = 'machine-learning' | 'cloud-computing' | 'systems' | 'software' | 'quant' | 'all';
-
-interface Category {
-  id: CategoryId;
-  name: string;
-}
-
-interface Technology {
-  id: string;
-  name: string;
-}
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  imageUrl: string;
-  category: CategoryId;
-  featured?: boolean;
-  technologies: Technology[];
-  projectUrl: string;
-}
-
-
+import { motion } from 'framer-motion';
 
 const PortfolioPage: React.FC = () => {
   // State
@@ -52,8 +29,6 @@ const PortfolioPage: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-
 
   // Categories
   const categories: Category[] = [
@@ -85,6 +60,18 @@ const PortfolioPage: React.FC = () => {
     fastapi: { id: 'fastapi', name: 'FastAPI' },
     sql: { id: 'sql', name: 'SQL' },
     llm: { id: 'llm', name: 'LLMs' },
+    firebase: { id: 'firebase', name: 'Firebase' },
+    sqlite: { id: 'sqlite', name: 'SQLite' },
+    java: { id: 'java', name: 'Java' },
+    angular: { id: 'angular', name: 'Angular' },
+    mysql: { id: 'mysql', name: 'MySQL' },
+    django: { id: 'django', name: 'Django' },
+    javascript: { id: 'javascript', name: 'JavaScript' },
+    android: { id: 'android', name: 'Android' },
+    express: { id: 'express', name: 'Express.js' },
+    'scikit-learn': { id: 'scikit-learn', name: 'scikit-learn' },
+    keras: { id: 'keras', name: 'Keras' },
+    'gnu-make': { id: 'gnu-make', name: 'GNU Make' }
   };
 
   // Projects
@@ -101,72 +88,162 @@ const PortfolioPage: React.FC = () => {
     },
     {
       id: 2,
-      title: 'Neural Networks Lab',
-      description: 'Deep learning research and implementation for vision tasks',
-      imageUrl: 'https://placehold.co/600x400/252525/FFF000',
-      category: 'machine-learning',
-      technologies: [techList.python, techList.tensorflow, techList.pytorch],
-      projectUrl: '/projects/neural-networks',
+      title: 'HKN Portal Website',
+      description: 'Full-stack web app for HKN UCSD with event planning, resource access, and dynamic content',
+      imageUrl: 'https://placehold.co/600x400/204080/FFCC00',
+      category: 'software',
+      featured: false,
+      technologies: [techList.react, techList.django, techList.javascript],
+      projectUrl: '/projects/hkn-portal',
     },
     {
       id: 3,
-      title: 'Computer Vision Pipeline',
-      description: 'Object detection and recognition systems with real-time processing',
-      imageUrl: 'https://placehold.co/600x400/252525/60FFFF',
+      title: 'LingoLab Hackathon App',
+      description: 'LLM-based PDF reader that scans research papers for hard vocabulary',
+      imageUrl: 'https://placehold.co/600x400/406060/FFD700',
       category: 'machine-learning',
-      technologies: [techList.python, techList.pytorch, techList.openai],
-      projectUrl: '/projects/computer-vision',
+      featured: false,
+      technologies: [techList.react, techList.python, techList.firebase, techList.typescript, techList.nodejs, techList.express],
+      projectUrl: '/projects/lingolab',
     },
     {
       id: 4,
-      title: 'AWS Infrastructure',
-      description: 'Scalable cloud architecture design for high-availability systems',
-      imageUrl: 'https://placehold.co/600x400/252525/FFF000',
-      category: 'cloud-computing',
-      technologies: [techList.aws, techList.terraform, techList.docker],
-      projectUrl: '/projects/aws-infrastructure',
+      title: 'Successorator App',
+      description: 'To-do list Android app with CI/CD and robust data handling using SQLite',
+      imageUrl: 'https://placehold.co/600x400/304050/00FF00',
+      category: 'software',
+      featured: false,
+      technologies: [techList.android, techList.sqlite, techList.java],
+      projectUrl: '/projects/successorator',
     },
     {
       id: 5,
-      title: 'Kubernetes Deployment',
-      description: 'Container orchestration and management for microservices',
-      imageUrl: 'https://placehold.co/600x400/252525/60FFFF',
-      category: 'cloud-computing',
-      technologies: [techList.kubernetes, techList.docker, techList.golang],
-      projectUrl: '/projects/kubernetes',
+      title: 'Bean Classification Model',
+      description: 'Neural network for classifying beans with preprocessing, evaluation, and hyperparameter tuning',
+      imageUrl: 'https://placehold.co/600x400/703070/FF00FF',
+      category: 'machine-learning',
+      featured: false,
+      technologies: [techList.tensorflow, techList['scikit-learn'], techList.keras],
+      projectUrl: '/projects/bean-classification',
     },
     {
       id: 6,
-      title: 'Distributed Systems',
-      description: 'Fault-tolerant system design with asynchronous messaging',
-      imageUrl: 'https://placehold.co/600x400/252525/FFF000',
+      title: 'Graph Data Structure',
+      description: "C++ implementation of BFS and Dijkstra's algorithm for CSV-based graphs",
+      imageUrl: 'https://placehold.co/600x400/101010/CCCCCC',
       category: 'systems',
-      technologies: [techList.golang, techList.cpp, techList.kafka],
-      projectUrl: '/projects/distributed-systems',
+      featured: false,
+      technologies: [techList.cpp, techList['gnu-make']],
+      projectUrl: '/projects/graph-data',
     },
     {
       id: 7,
-      title: 'Portfolio Website',
-      description: 'Modern, interactive personal showcase with React and animations',
-      imageUrl: 'https://placehold.co/600x400/252525/60FFFF',
-      category: 'software',
-      technologies: [techList.react, techList.typescript, techList.nodejs],
-      projectUrl: '/projects/portfolio',
+      title: 'C++ File Compressor',
+      description: 'Huffman encoding-based compressor optimized for performance and memory efficiency',
+      imageUrl: 'https://placehold.co/600x400/444444/AAAAAA',
+      category: 'systems',
+      featured: false,
+      technologies: [techList.cpp, techList['gnu-make']],
+      projectUrl: '/projects/file-compressor',
     },
     {
       id: 8,
-      title: 'Algorithmic Trading',
-      description: 'High-frequency trading systems and quant strategies',
-      imageUrl: 'https://placehold.co/600x400/252525/FFF000',
-      category: 'quant',
-      technologies: [techList.python, techList.cpp, techList.pandas],
-      projectUrl: '/projects/algo-trading',
+      title: 'Web-QA Chat Chrome Extension',
+      description: 'Chrome extension that answers questions based on web content using LlamaIndex backend',
+      imageUrl: 'https://placehold.co/600x400/403030/FFF000',
+      category: 'machine-learning',
+      featured: false,
+      technologies: [techList.python, techList.nodejs, techList.express, techList.angular, techList.typescript],
+      projectUrl: '/projects/web-qa-chat',
     },
+    {
+      id: 9,
+      title: 'SDHacks Website',
+      description: 'Hackathon management site with authentication, CRUD, and scalable backend',
+      imageUrl: 'https://placehold.co/600x400/000088/00FFFF',
+      category: 'software',
+      featured: false,
+      technologies: [techList.mysql, techList.nodejs, techList.express, techList.react],
+      projectUrl: '/projects/sdhacks-site',
+    },
+  
+
+
+    
+    // {
+    //   id: 1,
+    //   title: 'Text-to-SQL Generator',
+    //   description: 'LLM-powered system that converts natural language to SQL queries for financial databases',
+    //   imageUrl: 'https://placehold.co/600x400/202060/60FFFF',
+    //   category: 'machine-learning',
+    //   featured: true,
+    //   technologies: [techList.python, techList.llm, techList.sql, techList.fastapi],
+    //   projectUrl: '/projects/text-to-sql',
+    // },
+    // {
+    //   id: 2,
+    //   title: 'Neural Networks Lab',
+    //   description: 'Deep learning research and implementation for vision tasks',
+    //   imageUrl: 'https://placehold.co/600x400/252525/FFF000',
+    //   category: 'machine-learning',
+    //   technologies: [techList.python, techList.tensorflow, techList.pytorch],
+    //   projectUrl: '/projects/neural-networks',
+    // },
+    // {
+    //   id: 3,
+    //   title: 'Computer Vision Pipeline',
+    //   description: 'Object detection and recognition systems with real-time processing',
+    //   imageUrl: 'https://placehold.co/600x400/252525/60FFFF',
+    //   category: 'machine-learning',
+    //   technologies: [techList.python, techList.pytorch, techList.openai],
+    //   projectUrl: '/projects/computer-vision',
+    // },
+    // {
+    //   id: 4,
+    //   title: 'AWS Infrastructure',
+    //   description: 'Scalable cloud architecture design for high-availability systems',
+    //   imageUrl: 'https://placehold.co/600x400/252525/FFF000',
+    //   category: 'cloud-computing',
+    //   technologies: [techList.aws, techList.terraform, techList.docker],
+    //   projectUrl: '/projects/aws-infrastructure',
+    // },
+    // {
+    //   id: 5,
+    //   title: 'Kubernetes Deployment',
+    //   description: 'Container orchestration and management for microservices',
+    //   imageUrl: 'https://placehold.co/600x400/252525/60FFFF',
+    //   category: 'cloud-computing',
+    //   technologies: [techList.kubernetes, techList.docker, techList.golang],
+    //   projectUrl: '/projects/kubernetes',
+    // },
+    // {
+    //   id: 6,
+    //   title: 'Distributed Systems',
+    //   description: 'Fault-tolerant system design with asynchronous messaging',
+    //   imageUrl: 'https://placehold.co/600x400/252525/FFF000',
+    //   category: 'systems',
+    //   technologies: [techList.golang, techList.cpp, techList.kafka],
+    //   projectUrl: '/projects/distributed-systems',
+    // },
+    // {
+    //   id: 7,
+    //   title: 'Portfolio Website',
+    //   description: 'Modern, interactive personal showcase with React and animations',
+    //   imageUrl: 'https://placehold.co/600x400/252525/60FFFF',
+    //   category: 'software',
+    //   technologies: [techList.react, techList.typescript, techList.nodejs],
+    //   projectUrl: '/projects/portfolio',
+    // },
+    // {
+    //   id: 8,
+    //   title: 'Algorithmic Trading',
+    //   description: 'High-frequency trading systems and quant strategies',
+    //   imageUrl: 'https://placehold.co/600x400/252525/FFF000',
+    //   category: 'quant',
+    //   technologies: [techList.python, techList.cpp, techList.pandas],
+    //   projectUrl: '/projects/algo-trading',
+    // },
   ];
-
-  
-
-  
 
   const filteredProjects = activeCategory === 'all' 
     ? projects.filter(project => !project.featured) 
@@ -174,138 +251,42 @@ const PortfolioPage: React.FC = () => {
   
   const featuredProject = projects.find(project => project.featured);
 
-  
-
   return (
+    <section id="portfolio">
     <div className="cyberpunk-portfolio">
       <Helmet>
         <title>Technical Portfolio | Oscar Khaing</title>
         <meta name="description" content="Explore my technical projects across machine learning, cloud computing, systems engineering, and more." />
       </Helmet>
-      
-      <Navbar />
+      <motion.h1 
+            className="cp-main-title"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            TECHNICAL PORTFOLIO
+      </motion.h1>
       
       <FocusPills />
       
-      {/* Featured Project */}
-      {featuredProject && (
-        <section className="cp-featured-project">
-          <div className="cp-featured-project-container">
-            <div className="cp-featured-image-container">
-              <img 
-                src={featuredProject.imageUrl} 
-                alt={featuredProject.title} 
-                className="cp-featured-image"
-              />
-              <div className="cp-image-glitch-overlay"></div>
-            </div>
-            
-            <div className="cp-featured-content">
-              <h2 className="cp-featured-title">
-                🚀 Signature Project: {featuredProject.title}
-              </h2>
-              
-              <h3 className="cp-featured-subtitle">
-                Deploying LLMs on finance-grade infra
-              </h3>
-              
-              <p className="cp-featured-description">
-                {featuredProject.description}
-              </p>
-              
-              <div className="cp-featured-tech">
-                {featuredProject.technologies.map(tech => (
-                  <span key={tech.id} className="cp-tech-tag">
-                    {tech.name}
-                  </span>
-                ))}
-              </div>
-              
-              <motion.a 
-                href={featuredProject.projectUrl}
-                className="cp-featured-button"
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: '0 0 20px rgba(255, 240, 0, 0.8)'
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Case Study
-              </motion.a>
-            </div>
-          </div>
-        </section>
-      )}
+      {featuredProject && <FeaturedProject project={featuredProject} />}
       
-      {/* Project Category Tabs */}
       <div className="cp-tabs-container" ref={navRef}>
-        <div className={`cp-project-tabs ${isSticky ? 'sticky' : ''}`}>
-          {categories.map(category => (
-            <button 
-              key={category.id}
-              className={`cp-tab ${activeCategory === category.id ? 'active' : ''}`}
-              onClick={() => setActiveCategory(category.id)}
-            >
-              {category.name}
-              <div className="cp-tab-underline"></div>
-            </button>
-          ))}
-        </div>
+        <ProjectTabs 
+          categories={categories}
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+          isSticky={isSticky}
+        />
       </div>
       
-      {/* Project Grid */}
-      <section className="cp-project-grid">
-        <div className="cp-grid-container">
-          {filteredProjects.map(project => (
-            <motion.div 
-              key={project.id}
-              className="cp-project-card"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4 }}
-              whileHover={{ y: -10 }}
-            >
-              <div className="cp-card-image-container">
-                <img 
-                  src={project.imageUrl} 
-                  alt={project.title} 
-                  className="cp-card-image"
-                />
-                <div className="cp-card-overlay"></div>
-              </div>
-              
-              <div className="cp-card-content">
-                <h3 className="cp-card-title">{project.title}</h3>
-                <p className="cp-card-description">{project.description}</p>
-                
-                <div className="cp-card-technologies">
-                  {project.technologies.map(tech => (
-                    <span key={tech.id} className="cp-card-tech">
-                      {tech.name}
-                    </span>
-                  ))}
-                </div>
-                
-                <motion.a 
-                  href={project.projectUrl}
-                  className="cp-card-button"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  View Project
-                </motion.a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <ProjectGrid projects={filteredProjects} />
       
       <Timeline />
-      
       <FuturePlans />
-      
       <Footer />
     </div>
+    </section>
   );
 };
 

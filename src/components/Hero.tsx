@@ -1,13 +1,14 @@
 import './Hero.css';
 import '../styles/animations.css';
-import { useNavigate } from 'react-router-dom';
+
 
 const Hero = () => {
-  const navigate = useNavigate();
-  
-  // Navigate to portfolio page
   const goToPortfolio = (): void => {
-    navigate('/portfolio');
+    const element = document.getElementById('portfolio');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  
   };
 
   return (
@@ -40,12 +41,12 @@ const Hero = () => {
           >
             Explore My Work
           </button>
-          <div className="social-icon">
+          {/* <div className="social-icon">
             <span>GH</span>
           </div>
           <div className="social-icon">
             <span>LI</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

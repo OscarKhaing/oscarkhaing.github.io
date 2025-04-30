@@ -60,7 +60,7 @@
 }
 
 /* Cool Tree Link - Cyberpunk Styling */
-.cyberpunk-tree-link {
+.cyberpunk-nav-link {
   position: relative;
   color: #60FFFF;
   font-weight: 600;
@@ -72,7 +72,7 @@
   overflow: hidden;
 }
 
-.cyberpunk-tree-link::before {
+.cyberpunk-nav-link::before {
   content: "";
   position: absolute;
   top: 0;
@@ -83,11 +83,24 @@
   transition: all 0.6s ease;
 }
 
-.cyberpunk-tree-link:hover {
+.cyberpunk-nav-link:hover {
   color: #FFFFFF;
   box-shadow: 0 0 10px rgba(96, 255, 255, 0.5), 0 0 5px rgba(255, 0, 60, 0.5);
 }
 
-.cyberpunk-tree-link:hover::before {
+.cyberpunk-nav-link:hover::before {
   left: 100%;
 } 
+
+
+
+
+
+
+#contact {
+  scroll-margin-top: 6rem; 
+}
+
+
+
+

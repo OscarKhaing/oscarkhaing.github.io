@@ -10,6 +10,10 @@
   --cp-gray: var(--color-surface);
   --cp-light-gray: rgba(255, 255, 255, 0.15);
   --cp-font-main: 'Inter', 'DM Sans', sans-serif;
+
+  --cp-cyan: #60FFFF;
+  --cp-red: #ff003c;
+  --cp-yellow: #FFF000;
   
   /* Replace bright colors with site palette */
   --cp-primary: var(--color-primary);
@@ -17,6 +21,14 @@
   --cp-highlight: var(--color-highlight);
   --cp-text-primary: var(--color-text-primary);
   --cp-text-secondary: var(--color-text-secondary);
+}
+
+
+#portfolio {
+  min-height: 100vh;
+  padding: 6rem 1.5rem;
+  background-color: var(--color-background);
+  position: relative;
 }
 
 /* Main container */
@@ -39,389 +51,6 @@
 }
 
 
-/* ====================== */
-/* FEATURED PROJECT SECTION */
-/* ====================== */
-.cp-featured-project {
-  background-color: var(--cp-dark);
-  padding: 5rem 1.5rem;
-  position: relative;
-}
-
-.cp-featured-project-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  position: relative;
-}
-
-/* Subtle gradient stripe for featured project */
-.cp-featured-project-container::before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 0;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--cp-primary) 0%, transparent 100%);
-  border-radius: 3px;
-  opacity: 0.5;
-}
-
-@media (min-width: 768px) {
-  .cp-featured-project-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.cp-featured-image-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.cp-featured-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.cp-featured-image-container:hover .cp-featured-image {
-  transform: scale(1.05);
-}
-
-.cp-image-glitch-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    45deg,
-    rgba(245, 115, 115, 0.05) 0%,
-    rgba(96, 225, 224, 0.05) 100%
-  );
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-
-.cp-featured-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.cp-featured-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--cp-primary);
-  line-height: 1.2;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-}
-
-.cp-featured-title:hover {
-  color: var(--cp-primary);
-  text-shadow: none;
-}
-
-.cp-featured-subtitle {
-  font-size: 1.25rem;
-  color: var(--cp-secondary);
-  font-weight: 500;
-}
-
-.cp-featured-description {
-  color: var(--cp-text-secondary);
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.cp-featured-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 0.5rem 0;
-}
-
-/* Alternating tech tag colors */
-.cp-tech-tag {
-  background-color: rgba(245, 115, 115, 0.1);
-  color: var(--cp-primary);
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.cp-tech-tag:nth-child(even) {
-  background-color: rgba(96, 225, 224, 0.1);
-  color: var(--cp-secondary);
-}
-
-.cp-tech-tag:nth-child(3n) {
-  background-color: rgba(155, 93, 229, 0.1);
-  color: var(--cp-highlight);
-}
-
-.cp-featured-button {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--brand-gradient-start), var(--brand-gradient-end));
-  color: white;
-  font-weight: 700;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  margin-top: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(110, 142, 251, 0.2);
-  align-self: flex-start;
-}
-
-.cp-featured-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(110, 142, 251, 0.3);
-}
-
-.cp-featured-button::after {
-  display: none;
-}
-
-/* ===================== */
-/* CATEGORY TABS SECTION */
-/* ===================== */
-.cp-tabs-container {
-  background-color: var(--cp-dark);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Remove circuit animation */
-.cp-tabs-container::before {
-  display: none;
-}
-
-.cp-project-tabs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 10;
-  background-color: var(--cp-dark);
-}
-
-.cp-project-tabs.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  background-color: rgba(12, 12, 30, 0.9);
-  z-index: 100;
-}
-
-.cp-tab {
-  background: none;
-  border: none;
-  color: var(--cp-text-primary);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.cp-tab-underline {
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--cp-primary);
-  transition: width 0.3s ease;
-}
-
-.cp-tab:hover .cp-tab-underline {
-  width: 100%;
-}
-
-.cp-tab.active {
-  color: var(--cp-primary);
-  text-shadow: none;
-}
-
-.cp-tab.active .cp-tab-underline {
-  width: 100%;
-  height: 2px;
-  box-shadow: none;
-}
-
-/* =================== */
-/* PROJECT GRID SECTION */
-/* =================== */
-.cp-project-grid {
-  background-color: var(--cp-dark);
-  padding: 3rem 1.5rem 5rem;
-}
-
-.cp-grid-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .cp-grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.cp-project-card {
-  background-color: var(--cp-gray);
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cp-project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Remove red pulse effect */
-.cp-project-card::after {
-  display: none;
-}
-
-.cp-card-image-container {
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-}
-
-.cp-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.cp-project-card:hover .cp-card-image {
-  transform: scale(1.05);
-}
-
-.cp-card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(12, 12, 30, 0) 0%,
-    rgba(12, 12, 30, 0.9) 100%
-  );
-  z-index: 2;
-}
-
-.cp-card-content {
-  padding: 1.5rem;
-  position: relative;
-  z-index: 3;
-}
-
-.cp-card-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--cp-text-primary);
-  margin-bottom: 0.75rem;
-  transition: all 0.3s ease;
-}
-
-.cp-project-card:hover .cp-card-title {
-  color: var(--cp-primary);
-  text-shadow: none;
-  transform: none;
-}
-
-.cp-card-description {
-  color: var(--cp-text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-}
-
-.cp-card-technologies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Alternating tech tags */
-.cp-card-tech {
-  background-color: rgba(96, 225, 224, 0.1);
-  color: var(--cp-secondary);
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.cp-card-tech:nth-child(even) {
-  background-color: rgba(245, 115, 115, 0.1);
-  color: var(--cp-primary);
-}
-
-.cp-card-button {
-  position: relative;
-  display: inline-block;
-  color: var(--cp-secondary);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.4rem 0;
-  overflow: hidden;
-}
-
-.cp-card-button::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--cp-secondary);
-  transform: scaleX(0.3);
-  transform-origin: left;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.cp-card-button:hover::after {
-  transform: scaleX(1);
-  background-color: var(--cp-primary);
-}
 
 
 
@@ -442,6 +71,87 @@
 
 
 
+
+
+
+
+/* Glitch animation for hero title */
+@keyframes glitchPulse {
+  0%, 100% {
+    text-shadow: 0 0 15px var(--cp-cyan), 0 0 2px var(--cp-red);
+  }
+  33% {
+    text-shadow: 0 0 15px var(--cp-cyan), 
+                -5px 0 5px var(--cp-yellow),
+                4px 4px 5px var(--cp-red);
+    transform: skew(0.5deg);
+  }
+  66% {
+    text-shadow: 0 0 15px var(--cp-cyan), 0 0 3px var(--cp-red);
+    transform: skew(-0.5deg);
+  }
+  88% {
+    text-shadow: 0 0 15px var(--cp-cyan),
+                5px 0 5px var(--cp-red),
+                -5px -5px 5px var(--cp-yellow);
+  }
+}
+
+/* Data flicker animation for title */
+@keyframes dataFlicker {
+  0%, 95%, 100% {
+    opacity: 0.4;
+    transform: translateX(0);
+  }
+  95.5%, 96.5% {
+    opacity: 0.8;
+    transform: translateX(2px);
+  }
+  96%, 97% {
+    opacity: 0.2;
+    transform: translateX(-2px);
+  }
+  97.5%, 98% {
+    opacity: 0.7;
+    transform: translateX(0);
+  }
+}
+
+
+
+
+
+
+
+
+
+.cp-main-title {
+  font-size: 5rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--cp-cyan);
+  text-shadow: 0 0 15px var(--cp-cyan), 0 0 5px var(--cp-red); /* Added red glitch layer */
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  animation: glitchPulse 4s infinite alternate;
+  position: relative;
+  justify-self: center;
+}
+
+.cp-main-title::before {
+  content: "TECHNICAL PORTFOLIO";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-text-stroke: 1px var(--cp-red);
+  text-shadow: none;
+  z-index: -1;
+  opacity: 0.6;
+  animation: dataFlicker 6s infinite;
+}
 
 /* Media Queries */
 @media (min-width: 768px) {

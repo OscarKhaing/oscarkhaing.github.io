@@ -201,7 +201,7 @@ const About = () => {
               )}
             </div>
             
-            <div className="grid-cell contact-info">
+            <div id='contact' className="grid-cell contact-info">
               <h2>Let's Connect</h2>
               <div className="contact-links">
                 <a href="https://github.com/oscarkhaing" className="contact-link github">GitHub</a>

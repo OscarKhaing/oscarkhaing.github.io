@@ -59,7 +59,7 @@ const Navbar = () => {
   };
 
   // Navigation items for all pages
-  const navItems = ['Home', 'About', 'Contact'];
+  const navItems = ['About', 'Contact'];
   
   return (
     <motion.nav
@@ -73,6 +73,7 @@ const Navbar = () => {
         {/* Logo/Name */}
         <Link to="/">
           <motion.div 
+            onClick={() => scrollToSection('hero')}
             className="navbar-logo"
             whileHover={{ scale: 1.05 }}
             style={{ cursor: 'pointer' }}
@@ -80,6 +81,9 @@ const Navbar = () => {
             Oscar Khaing
           </motion.div>
         </Link>
+
+        
+
 
         {/* Navigation Links */}
         <div className="navbar-links">
@@ -95,6 +99,16 @@ const Navbar = () => {
           </Link> */}
 
           {/* Section Navigation - on all pages */}
+
+            <motion.button 
+              onClick={() => scrollToSection('hero')}
+              className="navbar-link"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Home
+            </motion.button>
+
           {navItems.map((item) => (
             <motion.button
               key={item}
@@ -107,8 +121,8 @@ const Navbar = () => {
             </motion.button>
           ))}
           <motion.button
-            onClick={() => navigate('/portfolio')}
-            className="navbar-link cyberpunk-tree-link"
+            onClick={() => scrollToSection('portfolio')}
+            className="navbar-link cyberpunk-nav-link"
             whileHover={{ 
               scale: 1.1,
               textShadow: "0 0 8px #ff003c, 0 0 12px #60FFFF"
