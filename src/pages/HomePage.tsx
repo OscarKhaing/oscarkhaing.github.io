@@ -2,9 +2,8 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import About from '../components/About'
-// import Portfolio from '../components/Portfolio'
 import Portfolio from './PortfolioPage'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer';
 import { Helmet } from 'react-helmet-async'
 import '../styles/Pages.css'
 

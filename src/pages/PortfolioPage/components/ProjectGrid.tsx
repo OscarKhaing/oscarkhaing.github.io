@@ -6,9 +6,10 @@ import './ProjectGrid.css';
 
 interface ProjectGridProps {
   projects: Project[];
+  showImages: boolean;
 }
 
-const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
+const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, showImages }) => {
   return (
     <section className="cp-project-grid">
       <div className="cp-grid-container">
@@ -21,16 +22,18 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => {
             transition={{ duration: 0.4 }}
             whileHover={{ y: -10 }}
           >
-            <div className="cp-card-image-container">
-              <img 
-                src={project.imageUrl} 
-                alt={project.title} 
-                className="cp-card-image"
-              />
-              <div className="cp-card-overlay"></div>
-            </div>
+            {showImages && (
+              <div className="cp-card-image-container">
+                <img 
+                  src={project.imageUrl} 
+                  alt={project.title} 
+                  className="cp-card-image"
+                />
+                <div className="cp-card-overlay"></div>
+              </div>
+            )}
             
-            <div className="cp-card-content">
+            <div className={`cp-card-content ${!showImages ? 'cp-card-content-full' : ''}`}>
               <h3 className="cp-card-title">{project.title}</h3>
               <p className="cp-card-description">{project.description}</p>
               

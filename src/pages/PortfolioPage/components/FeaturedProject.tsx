@@ -6,24 +6,27 @@ import './FeaturedProject.css';
 
 interface FeaturedProjectProps {
   project: Project;
+  showImages: boolean;
 }
 
-const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project }) => {
+const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, showImages }) => {
   if (!project) return null;
   
   return (
     <section className="cp-featured-project">
       <div className="cp-featured-project-container">
-        <div className="cp-featured-image-container">
-          <img 
-            src={project.imageUrl} 
-            alt={project.title} 
-            className="cp-featured-image"
-          />
-          <div className="cp-image-glitch-overlay"></div>
-        </div>
+        {showImages && (
+          <div className="cp-featured-image-container">
+            <img 
+              src={project.imageUrl} 
+              alt={project.title} 
+              className="cp-featured-image"
+            />
+            <div className="cp-image-glitch-overlay"></div>
+          </div>
+        )}
         
-        <div className="cp-featured-content">
+        <div className={`cp-featured-content ${!showImages ? 'cp-featured-content-full' : ''}`}>
           <h2 className="cp-featured-title">
             🚀 Signature Project: {project.title}
           </h2>

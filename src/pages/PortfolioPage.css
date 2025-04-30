@@ -177,3 +177,13 @@
     font-size: 2rem;
   }
 } 
+
+/* In FeaturedProject.css */
+.cp-featured-content-full {
+  width: 100%;
+}
+
+/* In ProjectGrid.css */
+.cp-card-content-full {
+  height: 100%;
+} 

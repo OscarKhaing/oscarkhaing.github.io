@@ -4,9 +4,8 @@ import FocusPills from './PortfolioPage/FocusPills';
 import FeaturedProject from './PortfolioPage/components/FeaturedProject';
 import ProjectTabs from './PortfolioPage/components/ProjectTabs';
 import ProjectGrid from './PortfolioPage/components/ProjectGrid';
-import Timeline from './PortfolioPage/Timeline';
+// import Timeline from './PortfolioPage/Timeline';
 import FuturePlans from './PortfolioPage/FuturePlans';
-import Footer from './PortfolioPage/Footer';
 import { CategoryId, Category, Technology, Project } from './PortfolioPage/types';
 import './PortfolioPage.css';
 import { motion } from 'framer-motion';
@@ -16,6 +15,8 @@ const PortfolioPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryId>('all');
   const navRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
+  // const [showImages, setShowImages] = useState<boolean>(false);
+  const [showImages] = useState<boolean>(false);
   
   // Handle sticky navigation
   useEffect(() => {
@@ -80,51 +81,56 @@ const PortfolioPage: React.FC = () => {
       id: 1,
       title: 'Text-to-SQL Generator',
       description: 'LLM-powered system that converts natural language to SQL queries for financial databases',
-      imageUrl: 'https://placehold.co/600x400/202060/60FFFF',
+      imageUrl: '',
       category: 'machine-learning',
       featured: true,
       technologies: [techList.python, techList.llm, techList.sql, techList.fastapi],
-      projectUrl: '/projects/text-to-sql',
+      // projectUrl: '/projects/text-to-sql',
+      projectUrl: 'https://github.com/PIMCO1B-BTTAI/PIMCO-Text2SQL',
     },
     {
       id: 2,
       title: 'HKN Portal Website',
       description: 'Full-stack web app for HKN UCSD with event planning, resource access, and dynamic content',
-      imageUrl: 'https://placehold.co/600x400/204080/FFCC00',
+      imageUrl: '',
       category: 'software',
       featured: false,
       technologies: [techList.react, techList.django, techList.javascript],
-      projectUrl: '/projects/hkn-portal',
+      // projectUrl: '/projects/hkn-portal',
+      projectUrl: 'https://portal.hknucsd.com/',
     },
     {
       id: 3,
       title: 'LingoLab Hackathon App',
       description: 'LLM-based PDF reader that scans research papers for hard vocabulary',
-      imageUrl: 'https://placehold.co/600x400/406060/FFD700',
+      imageUrl: '',
       category: 'machine-learning',
       featured: false,
       technologies: [techList.react, techList.python, techList.firebase, techList.typescript, techList.nodejs, techList.express],
-      projectUrl: '/projects/lingolab',
+      // projectUrl: '/projects/lingolab',
+      projectUrl: 'https://github.com/SithuSoe04/lingolab/',
     },
     {
       id: 4,
       title: 'Successorator App',
       description: 'To-do list Android app with CI/CD and robust data handling using SQLite',
-      imageUrl: 'https://placehold.co/600x400/304050/00FF00',
+      imageUrl: '',
       category: 'software',
       featured: false,
       technologies: [techList.android, techList.sqlite, techList.java],
-      projectUrl: '/projects/successorator',
+      // projectUrl: '/projects/successorator',
+      projectUrl: 'https://github.com/CSE-110-Winter-2024/project-team-12',
     },
     {
       id: 5,
-      title: 'Bean Classification Model',
-      description: 'Neural network for classifying beans with preprocessing, evaluation, and hyperparameter tuning',
-      imageUrl: 'https://placehold.co/600x400/703070/FF00FF',
+      title: 'Matchmaker',
+      description: 'Machine Learning model with simple webpage UI that predicts compatibility between 2 participants using textual features.',
+      imageUrl: '',
       category: 'machine-learning',
       featured: false,
       technologies: [techList.tensorflow, techList['scikit-learn'], techList.keras],
-      projectUrl: '/projects/bean-classification',
+      // projectUrl: '/projects/matchmaker',
+      projectUrl: 'https://github.com/s-fereidooni/CSE151A_matchmaker',
     },
     {
       id: 6,
@@ -154,7 +160,7 @@ const PortfolioPage: React.FC = () => {
       category: 'machine-learning',
       featured: false,
       technologies: [techList.python, techList.nodejs, techList.express, techList.angular, techList.typescript],
-      projectUrl: '/projects/web-qa-chat',
+      projectUrl: '',
     },
     {
       id: 9,
@@ -164,7 +170,7 @@ const PortfolioPage: React.FC = () => {
       category: 'software',
       featured: false,
       technologies: [techList.mysql, techList.nodejs, techList.express, techList.react],
-      projectUrl: '/projects/sdhacks-site',
+      projectUrl: '',
     },
   
 
@@ -269,7 +275,17 @@ const PortfolioPage: React.FC = () => {
       
       <FocusPills />
       
-      {featuredProject && <FeaturedProject project={featuredProject} />}
+      <div className="image-toggle-container">
+        {/* Toggle Button for Preview Images */}
+        {/* <button 
+          className="image-toggle-button"
+          onClick={() => setShowImages(!showImages)}
+        > 
+          {showImages ? 'Hide Images' : 'Show Images'}
+        </button> */}
+      </div>
+      
+      {featuredProject && <FeaturedProject project={featuredProject} showImages={showImages} />}
       
       <div className="cp-tabs-container" ref={navRef}>
         <ProjectTabs 
@@ -280,11 +296,10 @@ const PortfolioPage: React.FC = () => {
         />
       </div>
       
-      <ProjectGrid projects={filteredProjects} />
+      <ProjectGrid projects={filteredProjects} showImages={showImages} />
       
-      <Timeline />
+      {/* <Timeline /> */}
       <FuturePlans />
-      <Footer />
     </div>
     </section>
   );
