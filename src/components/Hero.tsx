@@ -1,5 +1,5 @@
-import '../../styles/Hero.css';
-import '../../styles/animations.css';
+import '../styles/Hero.css';
+import '../styles/animations.css';
 import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {

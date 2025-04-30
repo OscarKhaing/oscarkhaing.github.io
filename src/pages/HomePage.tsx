@@ -1,8 +1,8 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import Hero from '../components/sections/Hero'
-import About from '../components/sections/About'
-import Portfolio from '../components/sections/Portfolio'
+import Hero from '../components/Hero'
+import About from '../components/About'
+import Portfolio from '../components/Portfolio'
 import { Helmet } from 'react-helmet-async'
 import '../styles/Pages.css'
 

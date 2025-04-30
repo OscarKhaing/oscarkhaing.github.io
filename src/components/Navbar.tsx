@@ -108,14 +108,6 @@ const Navbar = () => {
           ))}
           <motion.button
             onClick={() => navigate('/portfolio')}
-            className="navbar-link"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Portfolio
-          </motion.button>
-          <motion.button
-            onClick={() => navigate('/portfolio-tree')}
             className="navbar-link cyberpunk-tree-link"
             whileHover={{ 
               scale: 1.1,
@@ -123,7 +115,7 @@ const Navbar = () => {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            Cool Tree
+            My Portfolio
           </motion.button>
         </div>
       </div>

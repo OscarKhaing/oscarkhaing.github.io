@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '../../styles/Portfolio.css';
-import '../../styles/animations.css';
+import '../styles/Portfolio.css';
+import '../styles/animations.css';
 
 // Type definitions for better type safety and easier extensions
 type CategoryId = 'machine-learning' | 'cloud-computing' | 'systems' | 'software' | 'quant' | string;

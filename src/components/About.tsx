@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '../../styles/About.css';
-import '../../styles/animations.css';
+import '../styles/About.css';
+import '../styles/animations.css';
 
 const About = () => {
   const [showConsole, setShowConsole] = useState(false);
@@ -204,10 +204,10 @@ const About = () => {
             <div className="grid-cell contact-info">
               <h2>Let's Connect</h2>
               <div className="contact-links">
-                <a href="https://github.com" className="contact-link github">GitHub</a>
-                <a href="https://linkedin.com" className="contact-link linkedin">LinkedIn</a>
-                <a href="#" className="contact-link resume">Resume</a>
-                <a href="mailto:example@email.com" className="contact-link email">Email Me</a>
+                <a href="https://github.com/oscarkhaing" className="contact-link github">GitHub</a>
+                <a href="https://www.linkedin.com/in/oscar-khaing/" className="contact-link linkedin">LinkedIn</a>
+                {/* <a href="#" className="contact-link resume">Resume</a>
+                <a href="mailto:example@email.com" className="contact-link email">Email Me</a> */}
               </div>
             </div>
           </div>
