@@ -1,13 +1,13 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import './About.css';
 import '../styles/animations.css';
 
 const About = () => {
-  const [showConsole, setShowConsole] = useState(false);
+  // const [showConsole, setShowConsole] = useState(false);
 
   // Toggle console ASCII art
   const toggleConsole = () => {
-    setShowConsole(prev => !prev);
+    // setShowConsole(prev => !prev);
   };
 
   return (
@@ -192,13 +192,13 @@ const About = () => {
                 <li>I enjoy a healthy lifestyle, with <span className="highlight">badminton</span>, basketball, and billiards as my favorite casual sports.</li>
               </ul>
               
-              {showConsole && (
+              {/* {showConsole && (
                 <div className="console-ascii">
                   <pre>
                     {'> Initializing personality module...\n> System check... Complete.'}
                   </pre>
                 </div>
-              )}
+              )} */}
             </div>
             
             <div id='contact' className="grid-cell contact-info">
