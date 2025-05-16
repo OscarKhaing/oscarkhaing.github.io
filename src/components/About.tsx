@@ -154,8 +154,8 @@ const About = () => {
                 </div>
                 
                 <div className="mini-project">
-                  <h3>Portfolio Website</h3>
-                  <p>Designed a dynamic, interactive personal website — this one!</p>
+                  <h3>Aako.world Landing Site</h3>
+                  <p>Developed a landing site for a geo-bound mp3 sharing social media platform startup.</p>
                 </div>
                 
                 <div className="mini-project">
