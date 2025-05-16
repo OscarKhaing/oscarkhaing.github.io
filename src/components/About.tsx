@@ -134,7 +134,13 @@ const About = () => {
             <div className="grid-cell projects-overview">
               <div className="projects-header">
                 <h2>Select Projects</h2>
-                <a href="/portfolio" className="view-all-btn">View All Projects</a>
+                <a href="#portfolio" onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById('portfolio');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }} className="view-all-btn">View All Projects</a>
               </div>
               <div className="project-list">
                 <div className="mini-project">
@@ -143,8 +149,8 @@ const About = () => {
                 </div>
                 
                 <div className="mini-project">
-                  <h3>Full-Stack HAB Prediction Website</h3>
-                  <p>Built a React + FastAPI pipeline updating twice-weekly scientific model predictions.</p>
+                  <h3>Harmful Algae Bloom Prediction App</h3>
+                  <p>Containerized a ML prediction app with Docker and deployed to GCP.</p>
                 </div>
                 
                 <div className="mini-project">
@@ -153,8 +159,8 @@ const About = () => {
                 </div>
                 
                 <div className="mini-project">
-                  <h3>Backend Engineering in Quant Finance</h3>
-                  <p>Developed alpha-stage trading logic simulators using Python and QuantConnect basics.</p>
+                  <h3>VTABS Blackjack Agent</h3>
+                  <p>Reinforcement learning agent trained via Q-learning to play Vegas Triple Attack Blackjack, optimizing decisions to maximize winnings.</p>
                 </div>
               </div>
             </div>
