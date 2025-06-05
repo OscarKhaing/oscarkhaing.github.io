@@ -119,7 +119,7 @@ const PortfolioPage: React.FC = () => {
       category: 'quant',
       featured: false,
       technologies: [techList.python, techList['scikit-learn'], techList.pandas],
-      projectUrl: '',
+      projectUrl: 'https://github.com/OscarKhaing/Gambler-Gambit',
     },
     {
       id: 5,
@@ -159,7 +159,7 @@ const PortfolioPage: React.FC = () => {
       category: 'machine-learning',
       featured: false,
       technologies: [techList.python, techList.docker, techList.aws],
-      projectUrl: '',
+      projectUrl: 'https://github.com/HKN-UCSD/HAB-Project-Website/',
     },
     {
       id: 9,
