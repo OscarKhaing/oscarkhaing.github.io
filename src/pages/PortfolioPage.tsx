@@ -5,7 +5,6 @@ import FeaturedProject from './PortfolioPage/components/FeaturedProject';
 import ProjectTabs from './PortfolioPage/components/ProjectTabs';
 import ProjectGrid from './PortfolioPage/components/ProjectGrid';
 // import Timeline from './PortfolioPage/Timeline';
-import FuturePlans from './PortfolioPage/FuturePlans';
 import { CategoryId, Category, Technology, Project } from './PortfolioPage/types';
 import './PortfolioPage.css';
 import { motion } from 'framer-motion';
@@ -271,9 +270,8 @@ const PortfolioPage: React.FC = () => {
       </div>
       
       <ProjectGrid projects={filteredProjects} showImages={showImages} />
-      
+
       {/* <Timeline /> */}
-      <FuturePlans />
     </div>
     </section>
   );
