@@ -5,6 +5,7 @@ import FeaturedProject from './PortfolioPage/components/FeaturedProject';
 import ProjectTabs from './PortfolioPage/components/ProjectTabs';
 import ProjectGrid from './PortfolioPage/components/ProjectGrid';
 // import Timeline from './PortfolioPage/Timeline';
+import ProfessionalExperience from './PortfolioPage/ProfessionalExperience';
 import { CategoryId, Category, Technology, Project } from './PortfolioPage/types';
 import './PortfolioPage.css';
 import { motion } from 'framer-motion';
@@ -247,17 +248,19 @@ const PortfolioPage: React.FC = () => {
       </motion.h1>
       
       <FocusPills />
-      
+
+      <ProfessionalExperience />
+
       <div className="image-toggle-container">
         {/* Toggle Button for Preview Images */}
-        {/* <button 
+        {/* <button
           className="image-toggle-button"
           onClick={() => setShowImages(!showImages)}
-        > 
+        >
           {showImages ? 'Hide Images' : 'Show Images'}
         </button> */}
       </div>
-      
+
       {featuredProject && <FeaturedProject project={featuredProject} showImages={showImages} />}
       
       <div className="cp-tabs-container" ref={navRef}>

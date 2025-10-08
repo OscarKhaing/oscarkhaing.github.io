@@ -27,10 +27,12 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, showImages }
         )}
         
         <div className={`cp-featured-content ${!showImages ? 'cp-featured-content-full' : ''}`}>
-          <h2 className="cp-featured-title">
-            🚀 Signature Project: {project.title}
-          </h2>
-          
+          <a href={project.projectUrl} className="cp-featured-title-link">
+            <h2 className="cp-featured-title">
+              🚀 Signature Project: {project.title}
+            </h2>
+          </a>
+
           <h3 className="cp-featured-subtitle">
             Deploying LLMs on finance-grade infra
           </h3>

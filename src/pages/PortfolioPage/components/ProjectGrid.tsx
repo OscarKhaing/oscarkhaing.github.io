@@ -34,7 +34,9 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, showImages }) => {
             )}
             
             <div className={`cp-card-content ${!showImages ? 'cp-card-content-full' : ''}`}>
-              <h3 className="cp-card-title">{project.title}</h3>
+              <a href={project.projectUrl} className="cp-card-title-link">
+                <h3 className="cp-card-title">{project.title}</h3>
+              </a>
               <p className="cp-card-description">{project.description}</p>
               
               <div className="cp-card-technologies">
