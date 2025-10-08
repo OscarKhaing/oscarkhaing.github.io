@@ -232,24 +232,27 @@ const PortfolioPage: React.FC = () => {
   const featuredProject = projects.find(project => project.featured);
 
   return (
-    <section id="portfolio">
     <div className="cyberpunk-portfolio">
       <Helmet>
         <title>Technical Portfolio | Oscar Khaing</title>
         <meta name="description" content="Explore my technical projects across machine learning, cloud computing, systems engineering, and more." />
       </Helmet>
-      <motion.h1 
-            className="cp-main-title"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            TECHNICAL PORTFOLIO
-      </motion.h1>
-      
-      <FocusPills />
 
-      <ProfessionalExperience />
+      <section id="experience">
+        <ProfessionalExperience />
+      </section>
+
+      <section id="portfolio">
+        <motion.h1
+              className="cp-main-title"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              TECHNICAL PORTFOLIO
+        </motion.h1>
+
+        <FocusPills />
 
       <div className="image-toggle-container">
         {/* Toggle Button for Preview Images */}
@@ -275,8 +278,8 @@ const PortfolioPage: React.FC = () => {
       <ProjectGrid projects={filteredProjects} showImages={showImages} />
 
       {/* <Timeline /> */}
+      </section>
     </div>
-    </section>
   );
 };
 

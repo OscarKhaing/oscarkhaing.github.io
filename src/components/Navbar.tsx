@@ -59,7 +59,7 @@ const Navbar = () => {
   };
 
   // Navigation items for all pages
-  const navItems = ['About', 'Contact'];
+  const navItems = ['About', 'Experience', 'Contact'];
   
   return (
     <motion.nav

@@ -80,40 +80,40 @@
   0%, 100% {
     text-shadow: 0 0 15px var(--cp-cyan), 0 0 2px var(--cp-red);
   }
-  33% {
-    text-shadow: 0 0 15px var(--cp-cyan), 
-                -5px 0 5px var(--cp-yellow),
-                4px 4px 5px var(--cp-red);
-    transform: skew(0.5deg);
-  }
-  66% {
-    text-shadow: 0 0 15px var(--cp-cyan), 0 0 3px var(--cp-red);
-    transform: skew(-0.5deg);
-  }
-  88% {
+  10% {
     text-shadow: 0 0 15px var(--cp-cyan),
-                5px 0 5px var(--cp-red),
-                -5px -5px 5px var(--cp-yellow);
+                -3px 0 5px var(--cp-yellow),
+                3px 0 5px var(--cp-red);
+  }
+  20% {
+    text-shadow: 0 0 15px var(--cp-cyan), 0 0 3px var(--cp-red);
+  }
+  30% {
+    text-shadow: 0 0 15px var(--cp-cyan),
+                3px 0 5px var(--cp-red),
+                -3px 0 5px var(--cp-yellow);
+  }
+  40%, 90% {
+    text-shadow: 0 0 15px var(--cp-cyan), 0 0 2px var(--cp-red);
   }
 }
 
 /* Data flicker animation for title */
 @keyframes dataFlicker {
-  0%, 95%, 100% {
+  0%, 85%, 100% {
     opacity: 0.4;
-    transform: translateX(0);
   }
-  95.5%, 96.5% {
+  86% {
     opacity: 0.8;
-    transform: translateX(2px);
   }
-  96%, 97% {
+  87% {
     opacity: 0.2;
-    transform: translateX(-2px);
   }
-  97.5%, 98% {
+  88% {
     opacity: 0.7;
-    transform: translateX(0);
+  }
+  89% {
+    opacity: 0.4;
   }
 }
 
@@ -134,15 +134,17 @@
   letter-spacing: 2px;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
-  animation: glitchPulse 4s infinite alternate;
+  animation: glitchPulse 0.8s infinite;
   position: relative;
   justify-self: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .cp-main-title::before {
   content: "TECHNICAL PORTFOLIO";
   position: absolute;
-  left: 0;
+  left: 1.5rem;
   top: 0;
   width: 100%;
   height: 100%;
@@ -150,7 +152,7 @@
   text-shadow: none;
   z-index: -1;
   opacity: 0.6;
-  animation: dataFlicker 6s infinite;
+  animation: dataFlicker 0.8s infinite;
 }
 
 /* Media Queries */
